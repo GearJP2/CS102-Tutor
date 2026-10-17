@@ -1,2 +1,82 @@
-# CS102-Tutor
-โครงการสอนเสริม C Programming ก่อน FInal
+# CS102 Tutor · C Programming
+
+เอกสารและแบบฝึกหัดสำหรับสอนเสริม **C Programming ก่อนสอบ Final** วิชา CS102 เน้นทบทวนเรื่อง Array ผ่านชีตสรุป สไลด์ และโจทย์ที่มีชุดทดสอบให้ตรวจคำตอบด้วยตัวเอง
+
+## เอกสารประกอบการเรียน
+
+| เอกสาร | ใช้สำหรับ |
+| --- | --- |
+| [ชีตสรุป Array](Handouts/Array_C_Cheat_Sheet_TH.pdf) | ทบทวนเนื้อหาเรื่อง Array |
+| [แบบฝึกหัด Array](Handouts/Array_C_Exercises_TH.pdf) | ฝึกทำโจทย์ |
+| [สไลด์ Array in C — PDF](Slide/Array_in_C_TH.pdf) | อ่านประกอบการติว |
+| [สไลด์ Array in C — PowerPoint](Slide/Array_in_C_TH.pptx) | เปิดสไลด์ต้นฉบับ |
+| [Array Lab](array_lab.c) | ฝึกเขียนโค้ดและรันชุดทดสอบ |
+
+## เริ่มทำ Array Lab
+
+เตรียมโปรแกรมแก้ไขโค้ดและ **GCC ที่รองรับ C99** จากนั้นเปิด Terminal ในโฟลเดอร์โปรเจกต์
+
+1. เปิดไฟล์ `array_lab.c` และอ่านเงื่อนไขเหนือแต่ละฟังก์ชัน
+2. เติมโค้ดในส่วน `STUDENT IMPLEMENTATION` ตามโจทย์
+3. คอมไพล์และรันชุดทดสอบด้วยคำสั่งด้านล่าง
+4. อ่านรายละเอียดของเทสที่ขึ้น `FAIL` แล้วแก้โค้ด คอมไพล์ และรันใหม่
+
+ไม่ต้องเขียน `scanf`, `printf` หรือ `main` เพิ่ม และห้ามเปลี่ยนชื่อฟังก์ชัน พารามิเตอร์ หรือส่วน `TEST RUNNER`
+
+### คอมไพล์และรัน
+
+บน Linux / macOS หรือ WSL:
+
+```bash
+gcc -std=c99 -Wall -Wextra -pedantic array_lab.c -o array_lab
+./array_lab
+```
+
+บน Windows PowerShell ที่ติดตั้ง GCC และเพิ่มไว้ใน PATH แล้ว:
+
+```powershell
+gcc -std=c99 -Wall -Wextra -pedantic array_lab.c -o array_lab.exe
+.\array_lab.exe
+```
+
+**คอมไพล์ใหม่ทุกครั้งหลังแก้โค้ด** เพื่อให้ชุดทดสอบใช้คำตอบล่าสุด
+
+### โจทย์ทั้ง 5 ข้อ
+
+| ข้อ | ฟังก์ชัน | สิ่งที่ต้องทำ | รันเฉพาะข้อ |
+| --- | --- | --- | --- |
+| 1 | `find_max_min` | หาค่าสูงสุดและต่ำสุด โดยไม่แก้ไขอาเรย์ต้นฉบับ | `./array_lab maxmin` |
+| 2 | `find_average` | หาค่าเฉลี่ยเป็น `double` และระวังผลรวมเกินช่วงของ `int` | `./array_lab average` |
+| 3 | `sort_descending` | ใช้ Bubble Sort เรียงสมาชิกจากมากไปน้อย | `./array_lab sort` |
+| 4 | `reverse_word` | กลับลำดับตัวอักษร ASCII ในอาเรย์เดิม โดยรักษา `\0` ปิดท้าย | `./array_lab reverse` |
+| 5 | `row_sums` | หาผลรวมแต่ละแถวของอาเรย์ 2 มิติที่มี 3 คอลัมน์ | `./array_lab rows` |
+
+บน Windows ให้เปลี่ยน `./array_lab` เป็น `.\array_lab.exe` โดยใช้ชื่อข้อเหมือนเดิม
+
+> ในไฟล์ปัจจุบัน ข้อ `find_max_min` มีโค้ดแล้ว ส่วนข้ออื่นยังมี `TODO` ให้ฝึกทำ จึงเป็นปกติที่การรันครั้งแรกจะมีเทสไม่ผ่าน
+
+### การอ่านผลทดสอบ
+
+- แต่ละข้อมี **10 เทส เทสละ 2 คะแนน** รวมข้อละ 20 คะแนน และเต็ม 100 คะแนนเมื่อรันครบทุกข้อ
+- `PASS` หมายถึงผ่านเทสนั้น ส่วน `FAIL` จะแสดงข้อมูลเพื่อช่วยตรวจคำตอบ เช่น ค่าที่คาดหวังและค่าที่ได้จริง
+- `[EDGE]` คือกรณีขอบเขต เช่น สมาชิกตัวเดียว ข้อความว่าง หรือค่าขอบเขตของ `int` โดยมีน้ำหนักเท่ากับเทสอื่น
+- หากรันเฉพาะข้อ คะแนนสรุปจะคิดเฉพาะข้อนั้น
+- สำหรับข้อเรียงลำดับ เทสตรวจผลลัพธ์ ส่วนวิธีใช้ Bubble Sort ต้องตรวจจากโค้ดเพิ่มเติม
+
+## แหล่งเรียนรู้เพิ่มเติม
+
+### ฝึกเขียนโปรแกรม
+
+- [BornToDev DevLab](https://www.borntodev.com/devlab)
+- [programming.in.th](https://programming.in.th/)
+- [LeetCode](https://leetcode.com/)
+
+### ทบทวนภาษา C และ Array
+
+- [C Arrays — W3Schools](https://www.w3schools.com/c/c_arrays.php)
+- [Arrays in C — GeeksforGeeks](https://www.geeksforgeeks.org/c/c-arrays/)
+- [สอน C Programming — KongRukSiam](https://www.youtube.com/watch?v=aDBmXMF9jOU&list=PLEE74DyIkwEntgbgSAWUQAamr-H79Lkun)
+
+### ต่อยอด C++ และ Competitive Programming
+
+- [เพลย์ลิสต์ C++ จากอาจารย์จุฬาฯ](https://www.youtube.com/watch?v=9bxg8jFaWqU&list=PLW3DcQsnGanN_7ye_Yfd_t6yQIAcWVu71&pp=0gcJCRMGa94AFGB0)
