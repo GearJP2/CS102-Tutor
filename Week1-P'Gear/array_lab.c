@@ -28,12 +28,7 @@
 void find_max_min(const int a[], int n, int result[2])
 {
     /* TODO: เขียนโค้ดตรงนี้ */
-    result[0] = a[0];
-    result[1] = a[0];
-    for (int i = 1; i < n; i++) {
-        if (a[i] > result[0]) result[0] = a[i];
-        if (a[i] < result[1]) result[1] = a[i];
-    }
+
     /* บรรทัด (void) ป้องกัน warning ตอนยังไม่ได้ทำ ลบออกได้ */
     (void)a;
     (void)n;
